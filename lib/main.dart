@@ -4,6 +4,7 @@ import 'package:page_transition/page_transition.dart';
 import 'colors.dart';
 import 'icons.dart';
 import 'textstyle.dart';
+import 'widgets/alertdialog.dart';
 
 void main() => runApp(const MyApp());
 
@@ -59,17 +60,22 @@ class MainScreen extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.center,
           mainAxisSize: MainAxisSize.max,
           children: [
-            SizedBox(
-              height: 100,
-              child: Image.asset(
-                GifIcon.globalwarming,
-                fit: BoxFit.contain,
-              ),
-            ),
-            FittedBox(
-                fit: BoxFit.contain,
-                alignment: Alignment.center,
-                child: SizedBox(width: 50, child: Text("about the environment", style: kanitr(c: ColorApp.turquoise))))
+            TextButton(
+                onPressed: () {
+                  alertDialog(context, title: "Create DB");
+                },
+                child: Text(
+                  "Test Create DB",
+                  style: kanitr(c: ColorApp.black),
+                )),
+            TextButton(
+                onPressed: () {
+                  alertDialog(context, title: "Test Api");
+                },
+                child: Text(
+                  "Test Api",
+                  style: kanitr(c: ColorApp.black),
+                ))
           ],
         ),
       ),
