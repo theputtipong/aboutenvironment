@@ -3,10 +3,11 @@ import 'package:flutter/material.dart';
 import '../colors.dart';
 import '../textstyle.dart';
 
-alertDialog(BuildContext context, {String? title, Widget? content, List<Widget>? listactions}) async {
+alertDialog(BuildContext context, bool barrier,
+    {String? title, List<Widget>? content, List<Widget>? listactions}) async {
   return showDialog<void>(
     context: context,
-    barrierDismissible: false, // user must tap button!
+    barrierDismissible: barrier, // user must tap button!
     builder: (BuildContext context) {
       return AlertDialog(
         title: title != null
@@ -16,7 +17,9 @@ alertDialog(BuildContext context, {String? title, Widget? content, List<Widget>?
               )
             : null,
         content: content != null
-            ? SingleChildScrollView(child: content)
+            ? SingleChildScrollView(
+                child: ListBody(children: content),
+              )
             // SingleChildScrollView(
             //     child: ListBody(
             //       children: const <Widget>[

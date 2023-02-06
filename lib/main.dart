@@ -1,8 +1,11 @@
+import 'package:aboutenvironment/db.dart';
 import 'package:animated_splash_screen/animated_splash_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:page_transition/page_transition.dart';
+import 'api.dart';
 import 'colors.dart';
 import 'icons.dart';
+import 'model.dart';
 import 'textstyle.dart';
 import 'widgets/alertdialog.dart';
 
@@ -52,6 +55,16 @@ class MyApp extends StatelessWidget {
 class MainScreen extends StatelessWidget {
   const MainScreen({super.key});
 
+  Future<bool> testCreateDB() async {
+    bool respond = await DBApp().createsembast();
+    return respond;
+  }
+
+  Future<ApiRespond> testAPI() async {
+    ApiRespond respond = await AirvisualApiHub().supportedcountries();
+    return respond;
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -62,7 +75,9 @@ class MainScreen extends StatelessWidget {
           children: [
             TextButton(
                 onPressed: () {
-                  alertDialog(context, title: "Create DB");
+                  testCreateDB().then(
+                    (value) => alertDialog(context, true, title: "Create DB ${value.toString()}"),
+                  );
                 },
                 child: Text(
                   "Test Create DB",
@@ -70,7 +85,8 @@ class MainScreen extends StatelessWidget {
                 )),
             TextButton(
                 onPressed: () {
-                  alertDialog(context, title: "Test Api");
+                  testAPI().then((value) => alertDialog(context, true,
+                      title: "Test Api ${value.status.toString()}", content: [Text(value.status.toString())]));
                 },
                 child: Text(
                   "Test Api",
