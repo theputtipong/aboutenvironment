@@ -34,7 +34,7 @@ class MyApp extends StatelessWidget {
           SizedBox(
             height: 100,
             child: Image.asset(
-              GIFIcon.globalwarming,
+              GifIcon.globalwarming,
               fit: BoxFit.contain,
             ),
           ),
@@ -62,7 +62,7 @@ class MainScreen extends StatelessWidget {
             SizedBox(
               height: 100,
               child: Image.asset(
-                GIFIcon.globalwarming,
+                GifIcon.globalwarming,
                 fit: BoxFit.contain,
               ),
             ),

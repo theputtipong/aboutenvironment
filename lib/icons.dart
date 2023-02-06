@@ -1,7 +1,7 @@
-class GIFIcon {
+class GifIcon {
   static const globalwarming = "gifs/global-warming.gif";
 }
 
-class PNGIcon {
+class PngIcon {
   static const globalwarming = "pngs/global-warming.png";
 }
