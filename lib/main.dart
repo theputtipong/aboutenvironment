@@ -76,20 +76,23 @@ class MainScreen extends StatelessWidget {
             TextButton(
                 onPressed: () {
                   testCreateDB().then(
-                    (value) => alertDialog(context, true, title: "Create DB ${value.toString()}"),
+                    (value) => alertDialog(context, true,
+                        title: "create db ${value.toString()}".toUpperCase(),
+                        content: [Text(value.toString().toUpperCase())]),
                   );
                 },
                 child: Text(
-                  "Test Create DB",
+                  "test create db".toUpperCase(),
                   style: kanitr(c: ColorApp.black),
                 )),
             TextButton(
                 onPressed: () {
                   testAPI().then((value) => alertDialog(context, true,
-                      title: "Test Api ${value.status.toString()}", content: [Text(value.status.toString())]));
+                      title: "test api ${value.status.toString()}".toUpperCase(),
+                      content: [Text(value.status.toString().toUpperCase())]));
                 },
                 child: Text(
-                  "Test Api",
+                  "test api".toUpperCase(),
                   style: kanitr(c: ColorApp.black),
                 ))
           ],

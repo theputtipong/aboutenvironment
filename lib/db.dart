@@ -1,20 +1,21 @@
 import 'dart:async';
-import 'package:sembast/sembast.dart';
+import 'package:path/path.dart';
+import 'package:path_provider/path_provider.dart';
 import 'package:sembast/sembast_io.dart';
-
 import 'config.dart';
 import 'debug.dart';
-// import 'debug.dart';
 
 class DBApp {
   Future<bool> createsembast() async {
     try {
-      DatabaseFactory dbFactory = databaseFactoryIo;
-      Database db = await dbFactory.openDatabase(DatabaseConfig.dbCountries);
+      var dir = await getApplicationDocumentsDirectory();
+      await dir.create(recursive: true);
+      var dbPath = join(dir.path, DatabaseConfig.dbCountries);
+      var db = await databaseFactoryIo.openDatabase(dbPath);
       logDebug('db createsembast', db.path.toString());
       return true;
-    } on Exception catch (e) {
-      logDebug('db createsembast', 'catch ${e.toString()}');
+    } catch (e) {
+      logDebug('db createsembast', 'catch $e');
       return false;
     }
   }
