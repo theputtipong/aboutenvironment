@@ -1,4 +1,3 @@
-import 'package:aboutenvironment/db.dart';
 import 'package:animated_splash_screen/animated_splash_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:page_transition/page_transition.dart';
@@ -55,11 +54,6 @@ class MyApp extends StatelessWidget {
 class MainScreen extends StatelessWidget {
   const MainScreen({super.key});
 
-  Future<bool> testCreateDB() async {
-    bool respond = await DBApp().createsembast();
-    return respond;
-  }
-
   Future<ApiRespond> testAPI() async {
     ApiRespond respond = await AirvisualApiHub().supportedcountries();
     return respond;
@@ -74,13 +68,7 @@ class MainScreen extends StatelessWidget {
           mainAxisSize: MainAxisSize.max,
           children: [
             TextButton(
-                onPressed: () {
-                  testCreateDB().then(
-                    (value) => alertDialog(context, true,
-                        title: "create db ${value.toString()}".toUpperCase(),
-                        content: [Text(value.toString().toUpperCase())]),
-                  );
-                },
+                onPressed: () {},
                 child: Text(
                   "test create db".toUpperCase(),
                   style: kanitr(c: ColorApp.black),
