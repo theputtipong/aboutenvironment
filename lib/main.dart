@@ -1,3 +1,5 @@
+// ignore_for_file: import_of_legacy_library_into_null_safe
+
 import 'package:animated_splash_screen/animated_splash_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:page_transition/page_transition.dart';
@@ -5,10 +7,11 @@ import 'api.dart';
 import 'colors.dart';
 import 'icons.dart';
 import 'model.dart';
+import 'sharedpreferences.dart';
 import 'textstyle.dart';
 import 'widgets/alertdialog.dart';
 
-void main() => runApp(const MyApp());
+main() => runApp(const MyApp());
 
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
@@ -68,9 +71,9 @@ class MainScreen extends StatelessWidget {
           mainAxisSize: MainAxisSize.max,
           children: [
             TextButton(
-                onPressed: () {},
+                onPressed: () async {},
                 child: Text(
-                  "test create db".toUpperCase(),
+                  "test shared preferences".toUpperCase(),
                   style: kanitr(c: ColorApp.black),
                 )),
             TextButton(
@@ -82,7 +85,7 @@ class MainScreen extends StatelessWidget {
                 child: Text(
                   "test api".toUpperCase(),
                   style: kanitr(c: ColorApp.black),
-                ))
+                )),
           ],
         ),
       ),
